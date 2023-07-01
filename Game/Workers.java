@@ -9,4 +9,16 @@ public class Workers extends BasicHero {
     }
 
     public int ammoRecover;
+
+    @Override
+    public void step() {
+
+    }
+
+    public String getInfo() {
+        return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
+                + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative + " " + "AmmoRecover = "
+                + ammoRecover);
+
+    }
 }

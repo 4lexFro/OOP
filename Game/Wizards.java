@@ -11,4 +11,15 @@ public abstract class Wizards extends BasicHero {
 
     public int heal;
 
+    @Override
+    public void step() {
+
+    }
+
+    public String getInfo() {
+        return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
+                + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative + " " + "Heal = " + heal);
+
+    }
+
 }

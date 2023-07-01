@@ -5,4 +5,13 @@ public abstract class Shooters extends BasicHero {
         super(id, healthLevel, name, type, attackLevelBase, initiative);
     }
 
+    @Override
+    public void step() {
+
+    }
+
+    public String getInfo() {
+        return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
+                + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative);
+    }
 }
