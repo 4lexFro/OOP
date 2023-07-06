@@ -1,9 +1,9 @@
-package Game;
+package units;
 
 public class Workers extends BasicHero {
     public Workers(int id, int healthLevel, String name, String type, int attackLevelBase, int initiative,
-            int ammoRecover) {
-        super(id, healthLevel, name, type, attackLevelBase, initiative);
+            int ammoRecover, int x, int y) {
+        super(id, healthLevel, name, type, attackLevelBase, initiative, x, y);
         this.ammoRecover = ammoRecover;
 
     }
@@ -11,14 +11,17 @@ public class Workers extends BasicHero {
     public int ammoRecover;
 
     @Override
-    public void step() {
-
-    }
-
+    
     public String getInfo() {
         return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
                 + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative + " " + "AmmoRecover = "
-                + ammoRecover);
+                + ammoRecover + " " + "X = " + place.x + " " + "Y = "
+                + place.y);
+    @Override
+     public void step(ArrayList<BasicHero> enemies) {
+        findNearEnemy(enemies);
+        System.out.println("LN" + temp[0] + " ENEMIS NAME " + enemies.get(temp[1].name));
+     }          
 
     }
 }
