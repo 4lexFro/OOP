@@ -1,5 +1,7 @@
 package units;
 
+import java.util.ArrayList;
+
 public abstract class Infantry extends BasicHero {
 
   public Infantry(int id, int healthLevel, String name, String type, int attackLevelBase, int initiative, int x,
@@ -16,8 +18,7 @@ public abstract class Infantry extends BasicHero {
   }
 
   @Override
-     public void step(ArrayList<BasicHero> enemies) {
-        int [] temp = findNearEnemy(enemies);
-        System.out.println("LN" + temp[0] + " ENEMIS NAME " + enemies.get(temp[1].name));
+     public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> friends) {
+        
      }
 }

@@ -1,6 +1,7 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 import units.BasicHero;
@@ -74,22 +75,35 @@ public class Main {
                     break;
                 default:
                     team_1.add(new Spearman("Mihail"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Spearman("Mihail"), 9, ynew Random().nextInt(0, 50);
+                    team_2.add(new Spearman("Mihail"), 9, new Random().nextInt(0, 50);
 
             }
             team_1.add(allHeroes.get(newRandom()).nextInt(0, allHeroes.size()));
             team_2.add(allHeroes.get(newRandom()).nextInt(0, allHeroes.size()));
         }
+
+        ArrayList<BasicHero> unitedTeam = new ArrayList<>();
+        unitedTeam.addAll(team_1);
+        unitedTeam.addAll(team_2);
+        unitedTeam.sort((o1, 02) -> o2.getInitiative() - o1.getInitiative());
+        
         System.out.println(" команда 1: ");
-        team_1.forEach(i -> System.out.println(i.getInfo()));
+        team_1.forEach(item -> System.out.println(item.getInfo()));
         System.out.println(" команда 2: ");
-        team_2.forEach(i -> System.out.println(i.getInfo()));
+        team_2.forEach(item -> System.out.println(item.getInfo()));
 
-        System.out.println("Team_1 Enemies: ");
-        team_1.forEach(n -> n.step(team_2));
-        System.out.println("Team_2 Enemies: ");
-        team_2.forEach(n -> n.step(team_1));
+        for (BasicHero item : unitedTeam) {
+            if (team_1.contains(item)) {
+                item.step(team_1,team_2);
+            }
+            else {
+                item.step(team_2,team_1);
+            }  
+            System.out.println(item.getInitiative());          
+        }
+        System.out.println("_".repeat(40));
+        team_1.forEach(item -> System.out.println(item.getInfo()));
+        team_2.forEach(item -> System.out.println(item.getInfo()));  
 
-    }
-
+     }
 }

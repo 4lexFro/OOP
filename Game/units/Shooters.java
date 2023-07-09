@@ -1,25 +1,39 @@
 package units;
 
+import java.util.ArrayList;
+
 public abstract class Shooters extends BasicHero {
-    public Shooters(int id, int healthLevel, String name, String type, int attackLevelBase, int initiative, int x,
+    public Shooters(int id, int healthLevel, String name, String type, int attackLevelBase, int arrows, int initiative,
+            int x,
             int y) {
         super(id, healthLevel, name, type, attackLevelBase, initiative, x, y);
+        this.arrows = arrows;
     }
+
+    protected int arrows;
 
     @Override
 
     public String getInfo() {
         return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
-                + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative + " " + "X = " + place.x + " "
+                + "Damage = " + attackLevelBase + " " + "ARROWS = " + arrows + " " + "Initiative = " + initiative + " "
+                + "X = " + place.x + " "
                 + "Y = "
                 + place.y);
-
-     @Override
-     public void step(ArrayList<BasicHero> enemies) {
-        findNearEnemy(enemies);
-        System.out.println("LN" + temp[0] + " ENEMIS NAME " + enemies.get(temp[1].name));
-     }          
     }
-    
+
+    @Override
+    public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> friends) {
+        if (this.healthLevel <= 0 || this.arrows == 0)
+            return;
+        BasicHero temp = findNearEnemy(enemies);
+        temp.healthLevel = temp.healthLevel - this.attackLevelBase;
+        for (BasicHero basicHero : friends) {
+            if (item.type.contains("Farmer"))
+                return;
+
+        }
+        this.arrows --;
+    }
 
 }

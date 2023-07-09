@@ -18,9 +18,9 @@ public class Workers extends BasicHero {
                 + ammoRecover + " " + "X = " + place.x + " " + "Y = "
                 + place.y);
     @Override
-     public void step(ArrayList<BasicHero> enemies) {
+     public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> friends) {
         findNearEnemy(enemies);
-        System.out.println("LN" + temp[0] + " ENEMIS NAME " + enemies.get(temp[1].name));
+        
      }          
 
     }
