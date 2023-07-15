@@ -13,7 +13,11 @@ import units.Sniper;
 import units.Spearman;
 import units.Сrossbowman;
 
-public class Main {
+public class MainProgram {
+    static ArrayList<BasicHero> unitedTeam = new ArrayList<>();
+    static ArrayList<BasicHero> team_1 = new ArrayList<>();
+    static ArrayList<BasicHero> team_2 = new ArrayList<>();
+
     public static void main(String[] args) {
         BasicHero tuck = new Monk("Tuck");
         BasicHero merlin = new Magician("Merlin");
@@ -23,15 +27,7 @@ public class Main {
         BasicHero steven = new Robber("Steven");
         BasicHero daniel = new Spearman("Daniel");
 
-        /*
-         * System.out.println(Tuck.getInfo());
-         * System.out.println(Merlin.getInfo());
-         * System.out.println(Robin.getInfo());
-         * System.out.println(Robert.getInfo());
-         * System.out.println(Oliver.getInfo());
-         * System.out.println(Steven.getInfo());
-         * System.out.println(Daniel.getInfo());
-         */
+        
 
         ArrayList<BasicHero> allHeroes = new ArrayList<>();
         allHeroes.add(tuck);
@@ -42,55 +38,57 @@ public class Main {
         allHeroes.add(steven);
         allHeroes.add(daniel);
 
-        ArrayList<BasicHero> team_1 = new ArrayList<>();
-        ArrayList<BasicHero> team_2 = new ArrayList<>();
+        //ArrayList<BasicHero> team_1 = new ArrayList<>();
+        //ArrayList<BasicHero> team_2 = new ArrayList<>();
 
-        for (int i = 0; i < allHeroes.length; i++) {
+        for (int i = 1; i < 11; i++) {
             int j = new Random().nextInt(7);
             
             switch (j) {
                 case 0:
-                    team_1.add(new Magician("Hendalf"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Magician("Hendalf"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Magician("Hendalf"), 1, i);
+                    team_2.add(new Magician("Hendalf"), 10, i);
                     break;
                 case 1:
-                    team_1.add(new Monk("Petr"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Monk("Petr"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Monk("Petr"), 1, i);
+                    team_2.add(new Monk("Petr"), 10, i);
                     break;
                 case 2:
-                    team_1.add(new Crossbowman("Taras"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Crossbowman("Taras"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Crossbowman("Taras"), 1, i);
+                    team_2.add(new Crossbowman("Taras"), 10, i);
                     break;
                 case 3:
-                    team_1.add(new Sniper("Cris"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Sniper("Cris"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Sniper("Cris"), 1, i);
+                    team_2.add(new Sniper("Cris"), 10, i);
                     break;
                 case 4:
-                    team_1.add(new Farmer("Boris"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Farmer("Boris"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Farmer("Boris"), 1, i);
+                    team_2.add(new Farmer("Boris"), 10, new Random().nextInt(0, 50));
                     break;
                 case 5:
-                    team_1.add(new Robber("Sergey"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Robber("Sergey"), 9, new Random().nextInt(0, 50));
+                    team_1.add(new Robber("Sergey"), 1, i);
+                    team_2.add(new Robber("Sergey"), 10, i);
                     break;
                 default:
-                    team_1.add(new Spearman("Mihail"), 0, new Random().nextInt(0, 50));
-                    team_2.add(new Spearman("Mihail"), 9, new Random().nextInt(0, 50);
+                    team_1.add(new Spearman("Mihail"), 1, i);
+                    team_2.add(new Spearman("Mihail"), 10, i);
 
             }
             team_1.add(allHeroes.get(newRandom()).nextInt(0, allHeroes.size()));
             team_2.add(allHeroes.get(newRandom()).nextInt(0, allHeroes.size()));
         }
 
-        ArrayList<BasicHero> unitedTeam = new ArrayList<>();
+        
         unitedTeam.addAll(team_1);
         unitedTeam.addAll(team_2);
         unitedTeam.sort((o1, 02) -> o2.getInitiative() - o1.getInitiative());
         
-        System.out.println(" команда 1: ");
+
         team_1.forEach(item -> System.out.println(item.getInfo()));
-        System.out.println(" команда 2: ");
+        
         team_2.forEach(item -> System.out.println(item.getInfo()));
+
+        View.view();
 
         for (BasicHero item : unitedTeam) {
             if (team_1.contains(item)) {
@@ -99,11 +97,8 @@ public class Main {
             else {
                 item.step(team_2,team_1);
             }  
-            System.out.println(item.getInitiative());          
+                    
         }
-        System.out.println("_".repeat(40));
-        team_1.forEach(item -> System.out.println(item.getInfo()));
-        team_2.forEach(item -> System.out.println(item.getInfo()));  
-
-     }
+        View.view();
+        
 }

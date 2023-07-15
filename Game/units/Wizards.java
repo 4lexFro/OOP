@@ -1,5 +1,6 @@
 package units;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Wizards extends BasicHero {
@@ -13,20 +14,36 @@ public abstract class Wizards extends BasicHero {
     public int heal;
 
     @Override
-    
+
     public String getInfo() {
-        return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
-                + "Damage = " + attackLevelBase + " " + "Initiative = " + initiative + " " + "Heal = " + heal + " "
+        return ("u2661" + healthLevel + " "  + name + " "  + type + " "
+                + "Dmg = " + attackLevelBase + " " + "Init = " + initiative + " " + "Heal = " + heal + " "
                 + "X = "
                 + place.x + " " + "Y = "
                 + place.y);
-                
-     @Override
-     public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> friends) {
-        findNearEnemy(enemies);
-        
-     }          
-
     }
 
+    public void step(ArrayList<BasicHero> enemies, ArrayList<BasicHero> friends) {
+        if (this.healthLevel > 0) {
+
+            for (BasicHero basicHero : friends) {
+                if (item.healthLevel < 99) {
+                    item.healthLevel += this.heal;
+                     System.out.println(" Вылечил: " + item.name);
+                    return;
+
+                }
+
+            }
+            
+                BasicHero temp = findNearEnemy(enemies);
+                temp.healthLevel -= this.heal;
+                System.out.println(" Повредил: " + temp.name);
+            
+
+            }
+
+        }
+
+    }
 }

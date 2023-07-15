@@ -1,6 +1,8 @@
 package units;
 
 public class Coordinates {
+    public int x;
+    public int y;
 
     public Coordinates(int x, int y) {
         this.x = x;
@@ -12,8 +14,5 @@ public class Coordinates {
         int dy = point.y - y;
         return Math.sqrt((dx * dx) + (dy * dy));
     }
-
-    int x;
-    int y;
 
 }

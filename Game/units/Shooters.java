@@ -15,8 +15,8 @@ public abstract class Shooters extends BasicHero {
     @Override
 
     public String getInfo() {
-        return ("ID: " + id + " " + "Health = " + healthLevel + " " + "Name: " + name + " " + "Type: " + type + " "
-                + "Damage = " + attackLevelBase + " " + "ARROWS = " + arrows + " " + "Initiative = " + initiative + " "
+        return ("u2661" + healthLevel + " "  + name + " "  + type + " "
+                + "Dmg = " + attackLevelBase + " " + "ARROWS = " + arrows + " " + "Init = " + initiative + " "
                 + "X = " + place.x + " "
                 + "Y = "
                 + place.y);
@@ -28,12 +28,17 @@ public abstract class Shooters extends BasicHero {
             return;
         BasicHero temp = findNearEnemy(enemies);
         temp.healthLevel = temp.healthLevel - this.attackLevelBase;
-        for (BasicHero basicHero : friends) {
-            if (item.type.contains("Farmer"))
+
+        for (BasicHero item : friends) {
+            if (item.type.contains("Farmer") && !((Farmer) (item)).busy && item.healthLevel > 0) {
+                (Farmer) (item).busy = true;
                 return;
 
+            }
+
         }
-        this.arrows --;
+
+        this.arrows--;
     }
 
 }

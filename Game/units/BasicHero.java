@@ -28,6 +28,19 @@ public abstract class BasicHero implements Actions {
 
     }
 
+    public Coordinates getPlace() {
+        return place;
+    }
+
+    public int getHealthLevel() {
+        return healthLevel;
+    }
+
+    @Override
+    public String toString() {
+        return super.getClass().getSimpleName();
+    }
+
     protected BasicHero findNearEnemy(ArrayList<BasicHero> enemies) {
         double min = 1000;
 
