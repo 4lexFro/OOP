@@ -27,7 +27,8 @@ public abstract class Wizards extends BasicHero {
         if (this.healthLevel > 0) {
 
             for (BasicHero basicHero : friends) {
-                if (item.healthLevel < 99) {
+                if (item.healthLevel < 99 & item.healthLevel > 0)
+                {
                     item.healthLevel += this.heal;
                      System.out.println(" Вылечил: " + item.name);
                     return;
@@ -37,7 +38,7 @@ public abstract class Wizards extends BasicHero {
             }
             
                 BasicHero temp = findNearEnemy(enemies);
-                temp.healthLevel -= this.heal;
+                temp.getDamage(this.heal);
                 System.out.println(" Повредил: " + temp.name);
             
 

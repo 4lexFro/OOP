@@ -3,6 +3,7 @@ package Game;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 import units.BasicHero;
 import units.Farmer;
@@ -47,31 +48,66 @@ public class MainProgram {
             switch (j) {
                 case 0:
                     team_1.add(new Magician("Hendalf"), 1, i);
-                    team_2.add(new Magician("Hendalf"), 10, i);
+                
                     break;
                 case 1:
                     team_1.add(new Monk("Petr"), 1, i);
-                    team_2.add(new Monk("Petr"), 10, i);
+    
                     break;
                 case 2:
                     team_1.add(new Crossbowman("Taras"), 1, i);
-                    team_2.add(new Crossbowman("Taras"), 10, i);
+        
                     break;
                 case 3:
                     team_1.add(new Sniper("Cris"), 1, i);
-                    team_2.add(new Sniper("Cris"), 10, i);
+
                     break;
                 case 4:
                     team_1.add(new Farmer("Boris"), 1, i);
-                    team_2.add(new Farmer("Boris"), 10, new Random().nextInt(0, 50));
+                
                     break;
                 case 5:
                     team_1.add(new Robber("Sergey"), 1, i);
-                    team_2.add(new Robber("Sergey"), 10, i);
+                
                     break;
                 default:
                     team_1.add(new Spearman("Mihail"), 1, i);
+            
+
+
+
+                    for (int i = 1; i < 11; i++) {
+            int j = new Random().nextInt(7);
+            
+            switch (j) {
+                case 0:
+                
+                    team_2.add(new Magician("Hendalf"), 10, i);
+                    break;
+                case 1:
+            
+                    team_2.add(new Monk("Petr"), 10, i);
+                    break;
+                case 2:
+                
+                    team_2.add(new Crossbowman("Taras"), 10, i);
+                    break;
+                case 3:
+            
+                    team_2.add(new Sniper("Cris"), 10, i);
+                    break;
+                case 4:
+    
+                    team_2.add(new Farmer("Boris"), 10, new Random().nextInt(0, 50));
+                    break;
+                case 5:
+                
+                    team_2.add(new Robber("Sergey"), 10, i);
+                    break;
+                default:
+            
                     team_2.add(new Spearman("Mihail"), 10, i);
+
 
             }
             team_1.add(allHeroes.get(newRandom()).nextInt(0, allHeroes.size()));
@@ -88,9 +124,13 @@ public class MainProgram {
         
         team_2.forEach(item -> System.out.println(item.getInfo()));
 
+        Scanner scan = new Scanner(System.in);
+
         View.view();
 
-        for (BasicHero item : unitedTeam) {
+        while(true){
+            scan.nextLine();
+            for (BasicHero item : unitedTeam) {
             if (team_1.contains(item)) {
                 item.step(team_1,team_2);
             }
@@ -100,5 +140,10 @@ public class MainProgram {
                     
         }
         View.view();
+
+        }
+    }
+        
         
 }
+    }
